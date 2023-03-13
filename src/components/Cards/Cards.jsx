@@ -1,21 +1,25 @@
-import Card from "../Card/Card";
-import style from "./Cards.module.css";
+import Card from '../Card/Card';
 
-export default function Cards({characters}) {
-return (
-   <div className={style.container} >{
-      characters.map(({image,species,name,gender})=>{
-        return(
-         <Card
-         image={image}
-         species={species}
-         gender={gender}
-         name={name}   
-         onClose={() => window.alert('Emulamos que se cierra la card')}
-         /> )})
-   }
-   </div>
-)
-  }   
-      
+export default function Cards({characters, onClose}) {
+   
+   return (
+      <div className= "Cards">
+         {
+            characters.map(({id, name, species, gender, image}) => {
+               return(
+                  <Card
+                     key ={id} 
+                     name={name}
+                     species={species}
+                     gender={gender}
+                     image={image}
+                     id={id}
+                     onClose={() => onClose(id)}
+                  />
+               );  
+            })
+         }
+      </div>
+   );
+}      
       
